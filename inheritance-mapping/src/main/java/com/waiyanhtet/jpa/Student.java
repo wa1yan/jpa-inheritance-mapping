@@ -1,0 +1,28 @@
+package com.waiyanhtet.jpa;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Student extends Account {
+
+	private static final long serialVersionUID = 1L;
+
+	@OneToOne(mappedBy = "student")
+	private Address address;
+	
+	@ManyToMany
+	private List<Section> sections;
+
+	public List<Section> getSections() {
+		return sections;
+	}
+
+	public void setSections(List<Section> sections) {
+		this.sections = sections;
+	}
+
+}
