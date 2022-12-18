@@ -2,10 +2,12 @@ package com.waiyanhtet.jpa;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
+@DiscriminatorValue(value = "T")
 public class Teacher extends Account {
 
 	private static final long serialVersionUID = 1L;

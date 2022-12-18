@@ -6,12 +6,19 @@ import static javax.persistence.GenerationType.IDENTITY;
 import java.io.Serializable;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import static javax.persistence.InheritanceType.JOINED;
 
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = JOINED)
+@DiscriminatorValue(value = "A")
+@DiscriminatorColumn(name = "entity_type", columnDefinition = "char(1)")
 public abstract class Account implements Serializable {
 
 	private static final long serialVersionUID = 1L;

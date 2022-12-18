@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "class")
+@DiscriminatorValue(value = "C")
 public class Section implements Serializable {
 
 	private static final long serialVersionUID = 1L;
