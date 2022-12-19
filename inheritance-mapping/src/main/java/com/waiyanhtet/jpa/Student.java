@@ -1,5 +1,6 @@
 package com.waiyanhtet.jpa;
 
+import java.awt.Color;
 import java.util.List;
 
 import javax.persistence.DiscriminatorValue;
@@ -26,5 +27,17 @@ public class Student extends Account {
 	public void setSections(List<Section> sections) {
 		this.sections = sections;
 	}
+	
+	public Student() {
+	
+	}
+	public Student(String name, String loginId, String password, Color color) {
+		super(name, loginId, Role.Student, password, color);
+	}
+	
+	
+	
+	
+	
 
 }

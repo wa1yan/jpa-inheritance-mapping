@@ -1,5 +1,7 @@
 package com.waiyanhtet.jpa;
 
+import java.awt.Color;
+
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -25,6 +27,12 @@ private static EntityManagerFactory emf;
 	
 	@Test
 	void test() {
+		var em = emf.createEntityManager();
+		em.getTransaction().begin();
 		
+		var account = new Student("William", "william", "william", Color.RED);
+		em.persist(account);
+		
+		em.getTransaction().commit();
 	}
 }
