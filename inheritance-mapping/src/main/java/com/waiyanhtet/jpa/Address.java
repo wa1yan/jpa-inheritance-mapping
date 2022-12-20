@@ -8,6 +8,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 
 @Entity
 public class Address implements Serializable {
@@ -19,11 +22,17 @@ public class Address implements Serializable {
 
 	private String address;
 
-	@Column(length = 12)
-	private String phone;
+	@Embedded
+	private Contact contact1;
 
-	@Column(length = 45)
-	private String email;
+	@Embedded
+	@AttributeOverrides({
+			
+		@AttributeOverride(name = "phone", column = @Column(name = "secondary_phone", table = "Address", length = 12)),
+			
+		@AttributeOverride(name = "email", column = @Column(name = "secondary_email", table = "Address")) 
+	})
+	private Contact contact2;
 
 	@OneToOne
 	@MapsId
@@ -46,20 +55,20 @@ public class Address implements Serializable {
 		this.address = address;
 	}
 
-	public String getPhone() {
-		return phone;
+	public Contact getContact1() {
+		return contact1;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setContact1(Contact contact1) {
+		this.contact1 = contact1;
 	}
 
-	public String getEmail() {
-		return email;
+	public Contact getContact2() {
+		return contact2;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setContact2(Contact contact2) {
+		this.contact2 = contact2;
 	}
 
 	public Student getStudent() {
